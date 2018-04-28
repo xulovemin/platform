@@ -27,40 +27,42 @@ public class NlpUtils {
         String jsonStr = jsonResponse.getBody().toString();
         List list = (List) JsonUtil.json2Java(jsonStr, List.class);
         if (list != null && list.size() > 0) {
-            Map<String, Object> Jsonmap = (Map<String, Object>) list.get(0);
-            List<List<Object>> entity = (List<List<Object>>) Jsonmap
-                    .get("entity");
-            List<String> word = (List<String>) Jsonmap.get("word");
-            for (List<Object> item : entity) {
-                if ("time".equals(item.get(2))) {
-                    continue;
-                }
-                if ("job_title".equals(item.get(2))) {
-                    continue;
-                }
-                if ("product_name".equals(item.get(2))) {
-                    continue;
-                }
-                String keyWord = "";
-                int startKey = (Integer) item.get(0);
-                int endKey = (Integer) item.get(1);
-                for (int i = startKey; i < endKey; i++) {
-                    keyWord += word.get(i);
-                }
-                if (40 < keyWord.length()) {
-                    continue;
-                }
-                if ("location".equals(item.get(2))) {// 地理位置
-                    locations.add(keyWord);
-                }
-                if ("person_name".equals(item.get(2))) {// 人名
-                    person_names.add(keyWord);
-                }
-                if ("org_name".equals(item.get(2))) {// 机构名
-                    org_names.add(keyWord);
-                }
-                if ("company_name".equals(item.get(2))) {// 公司名
-                    company_names.add(keyWord);
+            for (int j = 0; j < list.size(); j++) {
+                Map<String, Object> Jsonmap = (Map<String, Object>) list.get(j);
+                List<List<Object>> entity = (List<List<Object>>) Jsonmap
+                        .get("entity");
+                List<String> word = (List<String>) Jsonmap.get("word");
+                for (List<Object> item : entity) {
+                    if ("time".equals(item.get(2))) {
+                        continue;
+                    }
+                    if ("job_title".equals(item.get(2))) {
+                        continue;
+                    }
+                    if ("product_name".equals(item.get(2))) {
+                        continue;
+                    }
+                    String keyWord = "";
+                    int startKey = (Integer) item.get(0);
+                    int endKey = (Integer) item.get(1);
+                    for (int i = startKey; i < endKey; i++) {
+                        keyWord += word.get(i);
+                    }
+                    if (40 < keyWord.length()) {
+                        continue;
+                    }
+                    if ("location".equals(item.get(2))) {// 地理位置
+                        locations.add(keyWord);
+                    }
+                    if ("person_name".equals(item.get(2))) {// 人名
+                        person_names.add(keyWord);
+                    }
+                    if ("org_name".equals(item.get(2))) {// 机构名
+                        org_names.add(keyWord);
+                    }
+                    if ("company_name".equals(item.get(2))) {// 公司名
+                        company_names.add(keyWord);
+                    }
                 }
             }
         }
@@ -77,9 +79,13 @@ public class NlpUtils {
 
     public static Map<String, List<String>> posonNerStr(String str) {
         str = str.replace(" ", "");
+        List<String> list = new ArrayList<>();
+        transFormLength(list, str, 4999);
+        String[] strings = new String[list.size()];
+        list.toArray(strings);
         Map<String, List<String>> map = new HashMap<>();
         try {
-            String body = new JSONArray(new String[]{str}).toString();
+            String body = new JSONArray(strings).toString();
             String xToken = bosonKeyUtils.getTopBosonKey();
             if (!"".equals(xToken)) {
                 HttpResponse<JsonNode> jsonResponse = Unirest.post(NER_URL)
@@ -99,6 +105,23 @@ public class NlpUtils {
         } catch (Exception e) {
             logger.error(e.getMessage());
             return map;
+        }
+    }
+
+    /**
+     * 将文本切分定长
+     *
+     * @param list
+     * @param content
+     * @param length
+     */
+    public static void transFormLength(List<String> list, String content, int length) {
+        if (content.length() > length) {
+            String sub = content.substring(0, length);
+            list.add(sub);
+            transFormLength(list, content.substring(sub.length()), length);
+        } else {
+            list.add(content);
         }
     }
 
