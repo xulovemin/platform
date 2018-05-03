@@ -26,6 +26,7 @@ public class TrainDataController {
     @ResponseBody
     public int getTrainData() {
         List<TrainData> trainDatas = trainDataService.getThousand();
+        System.out.println(trainDatas.size());
         int i = 1;
         for (TrainData trainData : trainDatas) {
             String content = trainData.getContent();

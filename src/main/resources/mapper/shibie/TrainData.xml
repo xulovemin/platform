@@ -5,7 +5,7 @@
 <mapper namespace="com.jc.platform.shibie.dao.TrainDataDao">
 
     <select id="getThousand" resultType="com.jc.platform.shibie.domain.TrainData">
-        SELECT * FROM train_data t ORDER BY t.id asc LIMIT 0,7000
+        SELECT * FROM train_data t ORDER BY t.id asc
     </select>
 
     <update id="update" parameterType="com.jc.platform.shibie.domain.TrainData">
