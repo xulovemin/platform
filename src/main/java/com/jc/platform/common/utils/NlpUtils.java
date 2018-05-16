@@ -1,4 +1,4 @@
-package com.jc.platform.utils;
+package com.jc.platform.common.utils;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;

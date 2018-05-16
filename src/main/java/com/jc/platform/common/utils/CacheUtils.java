@@ -1,4 +1,4 @@
-package com.jc.platform.utils;
+package com.jc.platform.common.utils;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;

@@ -1,4 +1,4 @@
-package com.jc.platform.utils;
+package com.jc.platform.common.utils;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringEscapeUtils;

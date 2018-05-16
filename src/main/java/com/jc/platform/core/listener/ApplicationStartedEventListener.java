@@ -1,7 +1,7 @@
-package com.jc.platform.listener;
+package com.jc.platform.core.listener;
 
-import com.jc.platform.utils.BosonKeyUtils;
-import com.jc.platform.utils.JsonUtil;
+import com.jc.platform.common.utils.BosonKeyUtils;
+import com.jc.platform.common.utils.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
