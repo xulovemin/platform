@@ -50,7 +50,7 @@ public interface BaseDao<T> {
      * @author
      * @version 2014-03-24
      */
-    public List<T> findList();
+    public List<T> findList(T o);
 
     /**
      * 获取单条数据

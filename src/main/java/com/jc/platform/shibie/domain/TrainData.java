@@ -1,8 +1,8 @@
 package com.jc.platform.shibie.domain;
 
-public class TrainData {
+import com.jc.platform.core.entity.BaseEntity;
 
-    private int id;
+public class TrainData extends BaseEntity<TrainData> {
 
     private String content;
 
@@ -13,14 +13,6 @@ public class TrainData {
     private String org;
 
     private String company;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getContent() {
         return content;

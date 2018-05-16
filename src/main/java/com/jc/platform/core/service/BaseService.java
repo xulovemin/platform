@@ -1,7 +1,7 @@
 package com.jc.platform.core.service;
 
-import com.jc.core.dao.BaseDao;
-import com.jc.core.entity.BaseEntity;
+import com.jc.platform.core.dao.BaseDao;
+import com.jc.platform.core.entity.BaseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +45,8 @@ public abstract class BaseService<D extends BaseDao<T>, T extends BaseEntity<T>>
      *
      * @return
      */
-    public List<T> findList() {
-        return dao.findList();
+    public List<T> findList(T entity) {
+        return dao.findList(entity);
     }
 
 
