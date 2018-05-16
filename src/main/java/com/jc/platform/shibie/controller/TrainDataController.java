@@ -1,5 +1,6 @@
 package com.jc.platform.shibie.controller;
 
+import com.jc.platform.core.web.BaseController;
 import com.jc.platform.shibie.domain.TrainData;
 import com.jc.platform.shibie.service.TrainDataService;
 import com.jc.platform.common.utils.JsonUtil;
@@ -15,9 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-public class TrainDataController {
-
-    private Logger logger = LoggerFactory.getLogger(getClass());
+public class TrainDataController extends BaseController {
 
     @Autowired
     private TrainDataService trainDataService;

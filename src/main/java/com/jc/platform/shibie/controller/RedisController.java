@@ -1,5 +1,6 @@
 package com.jc.platform.shibie.controller;
 
+import com.jc.platform.core.web.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StringUtils;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RedisController {
+public class RedisController extends BaseController {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;

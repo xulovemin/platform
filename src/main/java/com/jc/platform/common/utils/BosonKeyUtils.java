@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class BosonKeyUtils {
 
-    private Logger logger = LoggerFactory.getLogger(BosonKeyUtils.class);
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     public List<Map<String, Object>> initBosonKeyList() {
         Yaml yaml = new Yaml();

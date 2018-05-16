@@ -39,5 +39,6 @@ dependencies {
     compile('net.bull.javamelody:javamelody-spring-boot-starter:1.71.0')
     compile('org.springframework.boot:spring-boot-starter-aop')
     compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile('com.github.pagehelper:pagehelper:4.1.6')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

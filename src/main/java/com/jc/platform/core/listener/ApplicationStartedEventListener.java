@@ -14,7 +14,7 @@ import java.util.Map;
 @Component
 public class ApplicationStartedEventListener implements ApplicationListener<ApplicationReadyEvent> {
 
-    protected Logger logger = LoggerFactory.getLogger(ApplicationStartedEventListener.class);
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
