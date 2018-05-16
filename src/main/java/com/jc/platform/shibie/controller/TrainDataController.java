@@ -1,5 +1,8 @@
 package com.jc.platform.shibie.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.jc.platform.core.page.JPage;
 import com.jc.platform.core.web.BaseController;
 import com.jc.platform.shibie.domain.TrainData;
 import com.jc.platform.shibie.service.TrainDataService;
@@ -8,6 +11,7 @@ import com.jc.platform.common.utils.NlpUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,9 +25,25 @@ public class TrainDataController extends BaseController {
     @Autowired
     private TrainDataService trainDataService;
 
-    @RequestMapping("getTrainData")
+    @RequestMapping("/")
+    public String index(Model model) {
+        model.addAttribute("name", "李旭");
+        return "shibie/index";
+    }
+
+    @RequestMapping("/getTrainData")
     @ResponseBody
-    public int getTrainData() {
+    public JPage getTrainData(JPage page) {
+        logger.info("进入分页后台");
+        PageHelper.offsetPage(page.getiDisplayStart(), page.getiDisplayLength());
+        List<TrainData> trainDatas = trainDataService.getThousand();
+        page.setPageInfo(new PageInfo(trainDatas));
+        return page;
+    }
+
+    @RequestMapping("getTrainDataByBoson")
+    @ResponseBody
+    public int getTrainDataByBoson() {
         List<TrainData> trainDatas = trainDataService.getThousand();
         System.out.println(trainDatas.size());
         int i = 1;
