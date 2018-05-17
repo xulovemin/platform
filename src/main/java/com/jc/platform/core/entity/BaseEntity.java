@@ -2,7 +2,7 @@ package com.jc.platform.core.entity;
 
 import java.io.Serializable;
 
-public abstract class BaseEntity<T> implements Serializable {
+public class BaseEntity<T> implements Serializable {
 
     private Long id;
 

@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Transactional(readOnly = true)
-public abstract class BaseService<D extends BaseDao<T>, T extends BaseEntity<T>> {
+public class BaseService<D extends BaseDao<T>, T extends BaseEntity<T>> {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
