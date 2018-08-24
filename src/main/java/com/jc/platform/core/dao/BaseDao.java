@@ -14,7 +14,7 @@ public interface BaseDao<T> {
      * @return 新增的数目数
      * @author
      */
-    public Integer save(T o);
+    Integer save(T o);
 
     /**
      * 批量保存方法
@@ -23,7 +23,7 @@ public interface BaseDao<T> {
      * @return Integer 添加的记录数
      * @author
      */
-    public Integer saveList(List<T> list);
+    Integer saveList(List<T> list);
 
     /**
      * 修改方法
@@ -32,7 +32,7 @@ public interface BaseDao<T> {
      * @return Integer 修改的记录数
      * @author
      */
-    public Integer update(T o);
+    Integer update(T o);
 
     /**
      * 逻辑删除
@@ -41,7 +41,7 @@ public interface BaseDao<T> {
      * @return Integer 删除的记录数
      * @author
      */
-    public Integer delete(T o);
+    Integer delete(T o);
 
     /**
      * 查询所有记录方法
@@ -50,7 +50,7 @@ public interface BaseDao<T> {
      * @author
      * @version 2014-03-24
      */
-    public List<T> findList(T o);
+    List<T> findList(T o);
 
     /**
      * 获取单条数据
@@ -58,7 +58,7 @@ public interface BaseDao<T> {
      * @param id
      * @return
      */
-    public T get(Long id);
+    T get(Long id);
 
     /**
      * 查询单条记录方法
@@ -67,6 +67,6 @@ public interface BaseDao<T> {
      * @return T 查询的记录
      * @author
      */
-    public T get(T o);
+    T get(T o);
 
 }
