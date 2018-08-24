@@ -13,8 +13,8 @@ import java.util.List;
 
 public class JsonUtil {
 
-    public JsonUtil() {
-    	
+    private JsonUtil() {
+
     }
 
     public static String java2Json(Object object) {
@@ -50,7 +50,7 @@ public class JsonUtil {
         }
         return jacksonToBean;
     }
-    
+
     public static <T> List<T> json2Array(String json, Class<T> type) {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
@@ -58,12 +58,12 @@ public class JsonUtil {
         JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, new Class[]{type});
         Object list = new ArrayList();
         try {
-            list = (List)mapper.readValue(json, javaType);
+            list = mapper.readValue(json, javaType);
         } catch (Exception var6) {
             var6.printStackTrace();
         }
 
-        return (List)list;
+        return (List) list;
     }
 
 }
